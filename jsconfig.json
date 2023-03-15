@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "module": "esnext",
+      "strict": true,
+      "noImplicitThis": true,
+      "jsx": "preserve",
+      "importHelpers": true,
+      "moduleResolution": "node",
+      "experimentalDecorators": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "suppressImplicitAnyIndexErrors":true, //  开启使用中括号获取对象的属性
+      "sourceMap": true,
+      "baseUrl": "./",
+      "paths": {
+        "tslib" : ["path/to/node_modules/tslib/tslib.d.ts"],
+        "@/*": [
+          "src/*"
+        ]
+      },
+      "skipLibCheck": true,
+      "lib": [
+        "esnext",
+        "dom",
+        "dom.iterable",
+        "scripthost",
+        "es2015.promise"
+      ]
+    },
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "src/**/*.vue",
+      "tests/**/*.ts",
+      "tests/**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }
+  
