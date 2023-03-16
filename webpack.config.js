@@ -4,6 +4,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const myPlugin = require('./src/plugins/myplugin.js');
 const webpack = require('webpack');
+// const webpackPartial = require('webpack-partial');
 
 // var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
@@ -17,6 +18,7 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'), // 打包出口
         filename: 'bundle.js', // 打包完的静态资源文件名[name]
         // publicPath: "dist/",
+        // auxiliaryComment: ''
     },
     resolve: {
         extensions: ['.vue', '.js'], //允许用户在引入模块时不带扩展名即文件后缀。根据文档，如果有多个文件有相同的名字，但后缀名不同，webpack 会解析列在数组首位的后缀的文件 并跳过其余的后缀。
@@ -40,6 +42,7 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
+                //'./src/plugins/deleteConlog.js'
                 use: ['vue-loader', './src/plugins/deleteConlog.js'],
             },
             {
@@ -54,6 +57,41 @@ module.exports = {
                     },
                 ],
             },
+            // {
+            //     test: /\.(jpe?g|png|gif|svg)$/i,
+            //     use: [
+            //         {
+            //             loader: 'file-loader',
+            //             options: {
+            //                 name: '[name].[ext]',
+            //                 outputPath: 'images/'
+            //             }
+            //         },
+            //         {
+            //             loader: 'image-webpack-loader',
+            //             options: {
+            //                 mozjpeg: {
+            //                     progressive: true,
+            //                     quality: 65
+            //                 },
+            //                 optipng: {
+            //                     enabled: false,
+            //                 },
+            //                 pngquant: {
+            //                     quality: '65-90',
+            //                     speed: 4
+            //                 },
+            //                 gifsicle: {
+            //                     interlaced: false,
+            //                 },
+            //                 webp: {
+            //                     quality: 75
+            //                 }
+            //             }
+            //         }
+            //     ],
+            //     exclude: /node_modules/
+            // }
         ],
     },
     plugins: [
@@ -66,6 +104,18 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(), //
         new CleanWebpackPlugin(), //清理之前打包文件中遗留的dist旧代码
         new myPlugin('plugin 生效'),
+        // webpackPartial(
+        //     {
+        //         // 指定哪些文件夹下的文件不会被打包
+        //         excludePaths: [
+        //             './src/assets/images/not-in-use/'
+        //         ],
+        //         // 指定哪些文件夹下的文件会被打包
+        //         includePaths: [
+        //             './src/assets/images/in-use/'
+        //         ]
+        //     }
+        // )
     ],
     devtool: 'eval-cheap-module-source-map',
     devServer: {

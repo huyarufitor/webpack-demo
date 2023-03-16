@@ -12,6 +12,10 @@ export default {
             msg: 'Hello world!',
         };
     },
+    mounted(){
+        console.log('登录页面');
+        this.msg = 'webpack login页面'
+    }
 };
 </script>
 

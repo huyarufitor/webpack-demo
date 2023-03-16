@@ -1,22 +1,29 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-
+import About from '../views/About.vue'
 const routes = [
   {
     path: '/',
-    redirect: '/login',
-    // hidden: true,
+    component: About,
   },
   {
-    path: "login",
+    path: "/login",
     name: "main",
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/login.vue"),
   },
+  {
+    path: "/product",
+    name: "product",
+    component: () =>
+      import(/* webpackChunkName: "product" */ "../views/product.vue"),
+  },
+
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(process.env.BASE_URL),
+  history: createWebHashHistory('http://localhost:8080'),
   routes,
 });
 
 export default router;
+
