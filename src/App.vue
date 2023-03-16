@@ -1,19 +1,33 @@
 <template>
-  <div class="example">{{ msg }}</div>
+    <div>
+        <div class="main">{{ msg }}</div>
+        <router-view />
+    </div>
 </template>
 
 <script>
+import { add } from './components/commonData.js';
 export default {
-  data () {
-    return {
-      msg: 'Hello world!'
-    }
-  }
-}
+    name: 'MyComponent',
+    data() {
+        return {
+            msg: '欢迎来到webpack!',
+        };
+    },
+    mounted() {
+        // add();
+        console.log('组件 已经mounted');
+    },
+    methods: {
+        handleClick() {
+            // add();
+        },
+    },
+};
 </script>
 
 <style scoped>
-.example {
-  color: red;
+.main {
+    color: red;
 }
 </style>
