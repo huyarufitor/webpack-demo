@@ -1,10 +1,10 @@
-import _ from 'lodash';
-import './assets/common.css';
-function fun1(){
-    const element = document.createElement('button');
-    element.innerHTML = _.join(['hello','webpack','ok2323'])
-    return element;
-}
+// import Vue from 'vue'
+import { createApp } from 'vue'
+import App from './App.vue'
 
-
-document.body.appendChild(fun1());
+// new Vue({
+//     el:'#root',
+//     render:h=>h(App) 
+// })
+createApp(App)
+  .mount("#root");

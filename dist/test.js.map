@@ -1,1 +1,0 @@
-{"version":3,"file":"test.js","mappings":";AAAAA,MAAM","sources":["webpack://webpack-demo/./src/test.js"],"sourcesContent":["alert('afaf');"],"names":["alert"],"sourceRoot":""}
