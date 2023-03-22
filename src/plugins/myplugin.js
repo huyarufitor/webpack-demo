@@ -5,7 +5,8 @@ class myPlugin {
         console.log(this.options)
     }
     apply(compiler) {
-        console.log("This is my first plugin.")
+        //处理自定义逻辑
+        console.log("This is my  plugin.")
     }
 }
 

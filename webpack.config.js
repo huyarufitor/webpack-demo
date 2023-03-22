@@ -3,6 +3,8 @@ const HtmlwebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const myPlugin = require('./src/plugins/myplugin.js');
+// const RemoveConsoleLogsPlugin = require('./src/plugins/deleteAll.js');
+
 const webpack = require('webpack');
 // const webpackPartial = require('webpack-partial');
 
@@ -43,7 +45,7 @@ module.exports = {
             {
                 test: /\.vue$/,
                 //'./src/plugins/deleteConlog.js'
-                use: ['vue-loader', './src/plugins/deleteConlog.js'],
+                use: ['vue-loader','./src/plugins/deleteConlog.js'],
             },
             {
                 test: /\.(png|jpg|gif)$/i,
@@ -96,14 +98,15 @@ module.exports = {
     },
     plugins: [
         new HtmlwebpackPlugin({
-            title: 'webpack-demos',
+            title: 'webpack-demo',
             filename: 'index.html',
             template: path.resolve(__dirname, './src/index.html'), //引入路径
         }), //自动创建并更新HTML文件
         new VueLoaderPlugin(),
-        new webpack.HotModuleReplacementPlugin(), //
+        // new webpack.HotModuleReplacementPlugin(), //
         new CleanWebpackPlugin(), //清理之前打包文件中遗留的dist旧代码
         new myPlugin('plugin 生效'),
+        // new RemoveConsoleLogsPlugin(),
         // webpackPartial(
         //     {
         //         // 指定哪些文件夹下的文件不会被打包
@@ -117,6 +120,7 @@ module.exports = {
         //     }
         // )
     ],
+    // devtool: 'eval',
     devtool: 'eval-cheap-module-source-map',
     devServer: {
         // quiet: true,
@@ -136,7 +140,7 @@ module.exports = {
     },
     optimization: {
         usedExports: true, //模块只导出被使用的成员
-        minimize: true, //压缩输出结果，自动注入UglifyJSPlugin
+        minimize:false, //压缩输出结果，自动注入UglifyJSPlugin
         concatenateModules: true, // 尽可能合并每一个模块到一个函数中
         sideEffects: true,
     },
